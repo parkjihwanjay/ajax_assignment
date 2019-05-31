@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script
+  src="http://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+</head>
+<body>
+    <button type="submit" id="ajax_img">멍!</button>
+    <!-- <img src="https://images.dog.ceo/breeds/mountain-swiss/n02107574_2356.jpg"/> -->
+    <script>
+        //javascript 사용
+
+        // let xmlhttp;
+
+        // if(window.XMLHttpRequest)
+        //     xmlhttp = new XMLHttpRequest()
+        // else
+        //     xmlhttp = new ActiveXObject("Microsoft.XMLHTTP")
+
+        // let button;
+
+        // button = document.querySelector('#ajax_img')
+        // body = document.querySelector('body')
+        // button.addEventListener('click', function(){
+        //     xmlhttp.open('GET', 'https://dog.ceo/api/breeds/image/random', true)
+        //     xmlhttp.send()
+        // })
+
+        // xmlhttp.onload = function(){
+        //     if(xmlhttp.status == 200)
+        //     {
+        //         json = JSON.parse(xmlhttp.responseText)
+        //         src = json.message
+        //         body.innerHTML = `<img src=${src} />`
+        //     }
+        // }
+        
+
+        
+        
+        // jquery 사용
+
+        $("#ajax_img").click(function(){
+            $.ajax({
+                type : "POST",
+                url : "https://dog.ceo/api/breeds/image/random",
+                data : {name : '강아지'},
+                success : function(data){
+                    let ht = data.message
+                    $('body').html(`<img src=${ht} />`)
+                }
+            })
+        })
+    </script>
+</body>
+</html>
